@@ -1,0 +1,82 @@
+<% if current_user %>
+	<div id="dashboard">
+		<div id="logo"></div>
+		<div id="user_display">
+			Logged in as <%= current_user.email %>.
+			<%= link_to "Log out", log_out_path %>
+		</div>
+		<table id="dash_link_container">
+				<tr>
+					<td>
+						<div id="add_client" class="dash_link" onClick="window.location='/clients/view'" >
+							<div class="dash_link_inner" >
+								<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+								View/Add Clients
+							</div>
+						</div>
+					</td>
+					<td>
+						<div id="add_supplier" class="dash_link" onClick="window.location='/suppliers/view'" >
+							<div class="dash_link_inner" >
+								<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+								View/Add Supplier
+							</div>
+						</div>
+					</td>
+					<td>
+						<div id="add_product" class="dash_link" onClick="window.location='/products/new'" >
+							<div class="dash_link_inner" >
+								<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+								Add Product
+							</div>
+						</div>
+					</td>
+					<td>
+						<div id="view_orders" class="dash_link" onClick="window.location='/orders/view'" >
+							<div class="dash_link_inner" >
+								<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+								Process Order
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div id="view_sales_reports" class="dash_link" onClick="window.location='/sales/view'" >
+							<div class="dash_link_inner" >
+								<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+								View Sales Reports
+							</div>
+						</div>
+					</td>
+					<td>
+						<div id="view_stock_levels" class="dash_link" onClick="window.location='/products/view'" >
+							<div class="dash_link_inner" >
+								<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+								View/Edit Stock
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		<div id="copyright-notice"><div id="copyright_border">Copyright © Conner McCabe, all rights reserved.</div></div>
+	</div>
+<% else %>
+	<div id="login_container">
+		<div id="logo"></div>
+		<%= form_tag sessions_path do %>
+			<p>
+		    	<%= text_field_tag :email, params[:email], :value => "Email", :onfocus => "clearValue(this)", :onblur => "restoreValue(this)"  %>
+		  	</p>
+		  	<p>
+		    	<%= password_field_tag :password, params[:password], :value => "Password", :onfocus => "clearValue(this)", :onblur => "restoreValue(this)" %>
+		  	</p>
+		  	<p class="button"><%= submit_tag "Log In" %></p>
+		<% end %>
+		<%= link_to "Sign Up", sign_up_path %> 
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, "* " + msg, :id => "flash_#{name}" %><br />
+		<% end %>
+		<div id="copyright-notice">Copyright © Conner McCabe, all rights reserved.</div>
+	</div>
+<% end %>

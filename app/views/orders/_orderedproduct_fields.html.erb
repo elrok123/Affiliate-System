@@ -1,0 +1,7 @@
+<fieldset style="border: none;">
+  <%= f.select :product_id, Product.all().collect {|p| [ p.product_name, p.id ] } %>
+  <%= f.text_field :quantity_ordered, :value => "Qty", :onfocus => "clearValue(this)", :onblur => "restoreValue(this)", :style => "width: 60px;" %>
+
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "remove", '#', class: "remove_fields" %>
+</fieldset>

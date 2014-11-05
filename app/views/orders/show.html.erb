@@ -1,0 +1,153 @@
+<% if current_user %>
+	<div id="dashboard">
+		<div id="logo"></div>
+		<table id="go_back_link_container">
+			<tr>
+				<td>
+					<div class="go_back_link" style="font-size: 16px;">
+						<%= link_to "<- Go Back", "/orders/view" %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="go_back_link" style="font-size: 30px;">
+						<%= @client.company %>
+					</div>
+				</td>
+				<td>
+					<div id="user_display" style="font-size: 14px;">
+						Invoice ID: 
+						<%= @order.id %></br>
+						Date of Creation:
+						<%= @order.created_at %></br>
+						Date of Delivery:
+						<%= @order.delivery_date %></br>
+						Sales Person:
+						<%= @salesperson.firstname + " " + @salesperson.surname %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="go_back_link" style="font-size: 16px;">
+						Client Name: <%= @client.firstname + " " + @client.surname %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="go_back_link" style="font-size: 16px;">
+						Client's Company: <%= @client.company %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="go_back_link" style="font-size: 16px;">
+						Client Address: <%= @client.address %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="go_back_link" style="font-size: 16px;">
+						Client City: <%= @client.city %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="go_back_link" style="font-size: 16px;">
+						Client Postcode: <%= @client.postcode %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="go_back_link" style="font-size: 16px;">
+						Client Phone: <%= @client.phone_number %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="go_back_link" style="font-size: 16px;">
+						Client ID: <%= @client.id %>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div id="products_container" >
+			<table style="width: 100%;">
+				<thead>
+					<tr class="row">
+						<td class="row_element" style="width: 60px;">
+							<p>Quantity Ordered:</p>
+						</td>
+						<td class="row_element" style="width: 62px;">
+							<p>Item ID:</p>
+						</td>
+						
+						<td class="row_element" style="width: 329px;">
+							<p>Item Name: </p>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<p>Date of Creation: </p>
+						</td>
+						<td class="row_element" style="width: 75px;">
+							<p>Unit Price: </p>
+						</td>
+						<td class="row_element" style="width: 74px;">
+							<p>Line Total:</p>
+						</td>
+					</tr>
+				</thead>
+				<% count = 1; @orderedproducts.each do |orderedproduct| %>
+					<% count = 1 unless count == 2 %>
+					<tr class="row" <% if count == 2 %><%= "id=#{:grey}" %><% end %>>
+						<td class="row_element" style="width: 62px;">
+							<%= orderedproduct.quantity_ordered %>
+						</td>
+						<td class="row_element" style="width: 62px;">
+							<%= Product.find(orderedproduct.product_id).id %>
+						</td>
+						<td class="row_element" style="width: 328px;">
+							<%= Product.find(orderedproduct.product_id).product_name %>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<%= @order.created_at %>
+						</td>
+						<td class="row_element" style="width: 75px;">
+							<%= "£" + Product.find(orderedproduct.product_id).product_price.to_s %>
+						</td>
+						<td class="row_element" style="width: 75px;">
+							<%= "£" + orderedproduct.total_price.to_s %>
+						</td>
+					</tr>
+					<% count = count + 1 %>
+				<% end %>
+			</table>
+			<div style="text-align: right;">
+			<table style="margin-right: 0px;">
+				<tr class="row" style="margin-right: 0px;">
+					<td class="row_element" style="width: 62px;">
+						Total: 
+					</td>
+					<td class="row_element" style="width: 62px;">
+						<%= "£" + @order.order_total.to_s %>
+					</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, "* " + msg, :id => "flash_#{name}" %><br />
+		<% end %>
+		<div id="copyright-notice"><div id="copyright_border">Copyright © Conner McCabe, all rights reserved.</div></div>
+	</div>
+<% else %>
+	<script type="text/javascript">
+		window.location="<%= root_url %>"
+	</script>
+<% end %>

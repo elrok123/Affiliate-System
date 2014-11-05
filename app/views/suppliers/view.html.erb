@@ -1,0 +1,82 @@
+<% if current_user %>
+	<div id="dashboard">
+		<div id="logo"></div>
+		<table id="go_back_link_container">
+			<tr>
+				<td>
+					<div class="go_back_link">
+						<%= link_to "<- Go Back", root_url %>
+					</div>
+				</td>
+				<td>
+					<div id="user_display">
+						Logged in as <%= current_user.email %>.
+						<%= link_to "Log out", log_out_path %>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, "* " + msg, :id => "flash_#{name}" %><br />
+		<% end %>
+		<div id="new_product_container">
+			<%= link_to "Add new supplier...", "/suppliers/new" %>
+		</div>
+		<div id="products_container" >
+			<table style="width: 100%">
+				<thead>
+					<tr class="row">
+						<td class="row_element" style="width: 18px;">
+							<p>ID:</p>
+						</td>
+						<td class="row_element" style="width: 226px;">
+							<p>Supplier Name:</p>
+						</td>
+						<td class="row_element" style="width: 112px;">
+							<p>Supplier Phone:</p>
+						</td>
+						<td class="row_element" style="width: 226px;">
+							<p>Supplier Email:</p>
+						</td>					
+						<td class="row_element" style="width: 110px;">
+							<p>Supplier Address: </p>
+						</td>
+						<td class="row_element" style="width: 106px;">
+							<p>Supplier Postcode: </p>
+						</td>
+					</tr>
+				</thead>
+				<% count = 1; @suppliers.each do |supplier| %>
+					<% count = 1 unless count == 2 %>
+					<tr class="row" <% if count == 2 %><%= "id=#{:grey}" %><% end %>>
+						<td class="row_element" style="width: 38px;">
+							<%= supplier.id %>
+						</td>
+						<td class="row_element" style="width: 520px;">
+							<%= link_to supplier.supplier_name, "/suppliers/#{supplier.id}/edit", :alt => "Click to edit product...", :title => "Click to edit product..." %>
+						</td>
+						<td class="row_element" style="width: 120px;">
+							<%= supplier.supplier_phone_number %>
+						</td>
+						<td class="row_element" style="width: 70px;">
+							<%= supplier.supplier_email %>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<%= supplier.supplier_address %>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<%= supplier.supplier_postcode %>
+						</td>
+					</tr>
+					<% count = count + 1 %>
+				<% end %>
+			</table>
+		</div>
+		
+		<div id="copyright-notice"><div id="copyright_border">Copyright © Conner McCabe, all rights reserved.</div></div>
+	</div>
+<% else %>
+	<script type="text/javascript">
+		window.location="<%= root_url %>"
+	</script>
+<% end %>

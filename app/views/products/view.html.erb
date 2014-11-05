@@ -1,0 +1,79 @@
+<% if current_user %>
+	<div id="dashboard">
+		<div id="logo"></div>
+		<table id="go_back_link_container">
+			<tr>
+				<td>
+					<div class="go_back_link">
+						<%= link_to "<- Go Back", root_url %>
+					</div>
+				</td>
+				<td>
+					<div id="user_display">
+						Logged in as <%= current_user.email %>.
+						<%= link_to "Log out", log_out_path %>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, "* " + msg, :id => "flash_#{name}" %><br />
+		<% end %>
+		<div id="products_container" >
+			<table style="width: 100%">
+				<thead>
+					<tr class="row">
+						<td class="row_element" style="width: 60px;">
+							<p>Product ID:</p>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<p>Product Name:</p>
+						</td>
+						<td class="row_element" style="width: 70px;">
+							<p>Product Price:</p>
+						</td>
+						<td class="row_element" style="width: 70px;">
+							<p>Product Quantity:</p>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<p>Product Supplier:</p>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<p>Date of Creation: </p>
+						</td>
+					</tr>
+				</thead>
+				<% count = 1; @products.each do |product| %>
+					<% count = 1 unless count == 2 %>
+					<tr class="row" <% if count == 2 %><%= "id=#{:grey}" %><% end %>>
+						<td class="row_element" style="width: 60px;">
+							<%= product.id %>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<%= link_to product.product_name, "/products/#{product.id}/edit", :alt => "Click to edit product...", :title => "Click to edit product..." %>
+						</td>
+						<td class="row_element" style="width: 70px;">
+							<%= "£" + product.product_price.to_s %>
+						</td>
+						<td class="row_element" style="width: 70px;">
+							<%= product.product_quantity %>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<%= Supplier.find(product.supplier_id).supplier_name %>
+						</td>
+						<td class="row_element" style="width: 200px;">
+							<%= product.created_at %>
+						</td>
+					</tr>
+					<% count = count + 1%>
+				<% end %>
+			</table>
+		</div>
+		
+		<div id="copyright-notice"><div id="copyright_border">Copyright © Conner McCabe, all rights reserved.</div></div>
+	</div>
+<% else %>
+	<script type="text/javascript">
+		window.location="<%= root_url %>"
+	</script>
+<% end %>

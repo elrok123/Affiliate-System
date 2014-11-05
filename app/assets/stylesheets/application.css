@@ -1,0 +1,261 @@
+/*
+|  This is the CSS to ensure consistent layout within the web application, it also ensures all elements conform to the same styling deemed by Conner.  |
+|  This CSS styling was written by Conner McCabe, Copyright 2013.  |
+*/
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+@font-face {
+  font-family: harabara;
+  src: url('Harabara.ttf');
+  src: url('Harabara.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+body {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	width: 100%;
+	height: 100%;
+	background: #dadada url('repeat.png') repeat;
+	text-align: center;
+	font-family: 'harabara';
+	letter-spacing: 1px;
+	font-weight: 100;
+	color: #2a2a2a;
+}
+a {
+	color: #2a2a2a;
+	box-shadow: 1px 1px 3px #fafafa;
+	font-weight: 100;
+}
+a:visited {
+	color: #2a2a2a;
+	box-shadow: 1px 1px 3px #fafafa;
+	font-weight: 100;
+}
+#login_container {
+	background: #fafafa;
+	box-shadow: 1px 1px 3px #0c0c0c;
+	width: 300px;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px 30px 20px 30px;
+	border-radius: 5px;
+	border: 1px solid #dadada;
+}
+#new_product_container {
+	text-align: right;
+	margin-right: 30px;
+	padding: 10px;
+
+}
+#logo {
+	background-image: url('SimpleSalesLogo.png');
+	background-size: 280px 83px;
+	background-repeat:no-repeat;
+	width: 280px;
+	height: 83px;
+}
+input[type="button"],  input[type="submit"] {
+	font-family: 'harabara';
+	background: #f2f0eb;
+	box-shadow: 1px 1px 1px #dbd2c8;
+	font-size: 16px;
+	color: #2a2a2a;
+	border: 1px solid #f79d1e;
+	border-radius: 3px;
+	width: auto;
+	padding: 4px;
+}
+input[type="button"]:active,  input[type="submit"]:active {
+	font-family: 'harabara';
+	background: #f2f0eb;
+	box-shadow: 1px 1px 3px #fafafa;
+	color: #2a2a2a;
+	font-size: 16px;
+	border: 1px solid #f79d1e;
+	border-radius: 3px;
+	width: auto;
+	padding: 4px;
+}
+input[type="text"],  input[type="password"], select {
+	font-family: 'harabara';
+	background: #f2f0eb;
+	padding: 7px;
+	-webkit-box-shadow: inset 0px 1px 2px 0px #2a2a2a;
+	-moz-box-shadow: inset 0px 1px 2px 0px #2a2a2a;
+	box-shadow: inset 0px 1px 2px 0px #2a2a2a;
+	color: #2a2a2a;
+	font-size: 16px;
+	border: 1px solid #f79d1e;
+	border-radius: 3px;
+	height: 30px;
+	width: 270px;
+	padding: 4px;
+}
+#go_back_link_container {
+	text-align: left;
+	width: 100%;
+	margin: 28px 0px 25px 0px;
+	margin-right: auto;
+	border-bottom:  2px dashed #f79d1e;
+	padding: 4px 0px 10px 0px;
+}
+#user_display {
+	width: 500px;
+	margin-right: 0px;
+	margin-left: auto;
+	text-align: right;
+}
+.go_back_link {
+	text-align: left;
+	width: 500px;
+	margin-left: 0px;
+}
+#dashboard {
+	background: #fafafa;
+	box-shadow: 1px 1px 3px #2a2a2a;
+	width: 1024px;
+	height: auto;
+	margin-top: 5%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px;
+	border-radius: 5px;
+	border: 1px solid #dadada;
+}
+#dash_link_container {
+	margin: 25px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.dash_link {
+	background: #fafafa;
+	width: 200px;
+	height: 250px;
+	text-align: center;
+	border: 1px solid #f79d1e;
+	box-shadow: 1px 1px 3px #2a2a2a;
+	border-radius: 3px;
+	text-shadow: 1px 1px #dadada, -1px -1px #fff;
+}
+.dash_link_inner {
+	border-radius: 5px;
+	height: 100%;
+	width: 100%;
+}
+.dash_link:hover {
+	background: #fafafa;
+	width: 200px;
+	height: 250px;
+	cursor: pointer;
+	border: 1px solid #f79d1e;
+	box-shadow: 0px 0px 2px #2a2a2a;
+	border-radius: 3px;
+}
+.dash_link:active {
+	-webkit-box-shadow: inset 0px 1px 4px 0px #2a2a2a;
+	-moz-box-shadow: inset 0px 1px 4px 0px #2a2a2a;
+	box-shadow: inset 0px 1px 4px 0px #2a2a2a;
+}
+.dash_link_inner:hover {
+	box-shadow: 0px 2px 1px #f79d1e;
+	height: 100%;
+	width: 100%;
+}
+#add_client {
+	background-image: url('clientlogo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#add_supplier {
+	background-image: url('supplierlogo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#add_product {
+	background-image: url('productlogo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#view_stock_levels {
+	background-image: url('viewstocklogo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#view_sales_reports {
+	background-image: url('viewsalesreports.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#view_orders {
+	background-image: url('vieworderslogo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+#products_container {
+	width: 938px;
+	height: auto;
+	border: 1px solid #2a2a2a;
+	margin-top: 20px;
+	margin-bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+}
+#products_container thead {
+	background-color: #f79d1e;
+}
+.row {
+	border-bottom: 1px solid #0c0c0c;
+}
+#grey {
+	background-color: #dadada;
+}
+td {
+	padding: 4px;
+}
+.row_element {
+	margin: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: center;
+}
+
+#copyright-notice {
+	width: 100%;
+	height: 20px;
+	margin-bottom: 0px;
+	text-align: center;
+	font-size: 12px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-top: 30px;
+}
+#copyright_border {
+	border-top: 2px dashed #f79d1e;
+	padding: 10px 40px 4px 40px;
+}
+#flash_alert {
+	color: #C00000;
+}
+#flash_notice {
+	color: #009900;
+}
+.error_messages {
+	color: #C00000;
+}

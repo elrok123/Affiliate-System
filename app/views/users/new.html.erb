@@ -1,0 +1,36 @@
+<div id="login_container">
+	<div id="logo"></div>
+	<h1>Sign Up</h1>
+
+	<%= form_for @user do |f| %>
+	  <% if @user.errors.any? %>
+	    <div class="error_messages">
+	        <% for message in @user.errors.full_messages %>
+	        	* <%= message %> <br>
+	        <% end %>
+	    </div>
+	  <% end %>
+	  <p>
+	    <%= f.label :firstname %><br />
+	    <%= f.text_field :firstname %>
+	  </p>
+	  <p>
+	    <%= f.label :surname %><br />
+	    <%= f.text_field :surname %>
+	  </p>
+	  <p>
+	    <%= f.label :email %><br />
+	    <%= f.text_field :email %>
+	  </p>
+	  <p>
+	    <%= f.label :password %><br />
+	    <%= f.password_field :password %>
+	  </p>
+	  <p>
+	    <%= f.label :password_confirmation %><br />
+	    <%= f.password_field :password_confirmation %>
+	  </p>
+	  <p class="button"><%= f.submit %></p>
+	  <%= link_to "Log In", root_url %> 
+	<% end %>
+</div>

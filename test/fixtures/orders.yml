@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ClientID: 1
+  OrderTotal: 1.5
+
+two:
+  ClientID: 1
+  OrderTotal: 1.5

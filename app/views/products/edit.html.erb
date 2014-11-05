@@ -1,0 +1,54 @@
+<% if current_user %>
+	<div id="dashboard">
+		<div id="logo"></div>
+		<table id="go_back_link_container">
+			<tr>
+				<td>
+					<div class="go_back_link">
+						<%= link_to "<- Go Back", "/products/view" %>
+					</div>
+				</td>
+				<td>
+					<div id="user_display">
+						Logged in as <%= current_user.email %>.
+						<%= link_to "Log out", log_out_path %>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<%= form_for @product do |f| %>
+		  <% if @product.errors.any? %>
+		    <div class="error_messages">
+		        <% for message in @product.errors.full_messages %>
+		        	* <%= message %> <br>
+		        <% end %>
+		    </div>
+		  <% end %>
+		  <p>
+		    <%= f.label 'Product Name' %><br />
+		    <%= f.text_field :product_name, :value => @product.product_name, :onfocus => "clearValue(this)", :onblur => "restoreValue(this)" %>
+		  </p>
+		  <p>
+		    <%= f.label 'Product Price (In GBP)' %><br />
+		    <%= f.text_field :product_price, :value => @product.product_price, :onfocus => "clearValue(this)", :onblur => "restoreValue(this)" %>
+		  </p>
+		  <p>
+		    <%= f.label 'Current Product Quantity' %><br />
+		    <%= f.text_field :product_quantity, :value => @product.product_quantity, :onfocus => "clearValue(this)", :onblur => "restoreValue(this)" %>
+		  </p>
+		  <p>
+		    <%= f.label 'Select The Product Supplier' %><br />
+		    <%= select :product, :supplier_id, Supplier.all().collect { |s| [ s.supplier_name, s.id ] } %>
+		  </p>
+		  <p class="button"><%= f.submit %></p>
+		<% end %>
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, "* " + msg, :id => "flash_#{name}" %><br />
+		<% end %>
+		<div id="copyright-notice"><div id="copyright_border">Copyright © Conner McCabe, all rights reserved.</div></div>
+	</div>
+<% else %>
+	<script type="text/javascript">
+		window.location="<%= root_url %>"
+	</script>
+<% end %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  SupplierName: MyString
+  SupplierPhoneNumber: MyString
+  SupplierPostcode: MyString
+  SupplierAddress: MyString
+  SupplierEmail: MyString
+
+two:
+  SupplierName: MyString
+  SupplierPhoneNumber: MyString
+  SupplierPostcode: MyString
+  SupplierAddress: MyString
+  SupplierEmail: MyString
