@@ -1,4 +1,4 @@
-<img src="http://www.koansystems.co.uk/img/Koanhosting/hugelogo.jpg" style="width: 250px; height: auto;" title="Koanhosting Logo" alt="Koanhosting Logo" />
+<img src="http://www.koansystems.co.uk/img/Koanhosting/hugelogo.png" style="width: 250px; height: auto;" title="Koanhosting Logo" alt="Koanhosting Logo" />
 
 Affiliate-System
 ================
